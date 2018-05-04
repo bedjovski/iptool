@@ -377,12 +377,13 @@ int main()
 	if (controller == 1) {
 		// create image
 		createIMG();
-		tgt.copyImage(src);
+		//tgt.copyImage(src);
 		//create cells
 		createCells();
 		//nearest cell to point using bfs
 		nearestPoint();
 		saveIMGsrc();
+		tgt.copyImage(src);
 		int X = -4, Y = -4, Xprev = -4, Yprev = -4;
 		while (1) { // enter coords x,y, if entered -1 exit, -2 for clear, -3 for save result
 			if (X >= 0) {
@@ -406,12 +407,15 @@ int main()
 			cin >> Y;
 			if (Xprev == -4)
 			{
+				//saveIMGtar();
 				fire(X, Y);
+				//saveIMGtar();
 				purp(X, Y);
 				saveIMGtar();
 			}
 			if (Xprev >= 0) {
 				clearPurp(Xprev, Yprev);
+				//saveIMGtar();
 				purp(X, Y);
 				cout << Xprev << " " << Yprev << " " << X << " " << Y << endl;
 				move(Xprev, Yprev, X, Y);
@@ -433,7 +437,7 @@ int main()
 		markit1(3,30);
 		srand(time(NULL));
 		int i = 250, j = 250;
-		for (int k = 0; k < 10000000; k++)
+		for (int k = 0; k < 100; k++)
 		{
 			if (i >= 0 && i < N && j >= 0 && j < M) {
 				tgtp.setPixel(i, j, 1, 0);
